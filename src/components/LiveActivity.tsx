@@ -1,40 +1,21 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Activity, GitCommit, FolderGit2, Mail, Eye, Share2, Send, RefreshCw, Radio, CheckCircle2, ExternalLink } from 'lucide-react';
-import { ActivityItem } from '@/lib/types';
-import { INITIAL_ACTIVITIES } from '@/lib/data';
-
-function formatRelativeTime(timestamp: string): string {
-  if (!timestamp) return 'Recently';
-  if (timestamp.includes('ago') || timestamp.includes('Just now') || timestamp.toLowerCase() === 'active') {
-    return timestamp;
-  }
-  const date = new Date(timestamp);
-  if (isNaN(date.getTime())) return timestamp;
-  const now = Date.now();
-  const diffSec = Math.floor((now - date.getTime()) / 1000);
-  if (diffSec < 60) return 'Just now';
-  if (diffSec < 3600) return `${Math.floor(diffSec / 60)}m ago`;
-  if (diffSec < 86400) return `${Math.floor(diffSec / 3600)}h ago`;
-  if (diffSec < 172800) return 'Yesterday';
-  if (diffSec < 604800) return `${Math.floor(diffSec / 86400)}d ago`;
-  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-}
+import { FolderGit2, RefreshCw, Radio } from 'lucide-react';
+import { CURRENT_GITHUB_PROJECTS } from '@/lib/data';
 
 export default function LiveActivity() {
-  const [activities, setActivities] = useState<ActivityItem[]>(INITIAL_ACTIVITIES);
+  const [projects, setProjects] = useState<string[]>(CURRENT_GITHUB_PROJECTS || ['Voxora-AI']);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [activeFilter, setActiveFilter] = useState<string>('All');
 
-  const fetchActivities = async () => {
+  const fetchProjects = async () => {
     setIsRefreshing(true);
     try {
       const res = await fetch('/api/activity');
       if (res.ok) {
         const data = await res.json();
-        if (data.activities) {
-          setActivities(data.activities);
+        if (data.projects && Array.isArray(data.projects) && data.projects.length > 0) {
+          setProjects(data.projects);
         }
       }
     } catch (err) {
@@ -45,37 +26,10 @@ export default function LiveActivity() {
   };
 
   useEffect(() => {
-    fetchActivities();
-    const interval = setInterval(fetchActivities, 20000);
+    fetchProjects();
+    const interval = setInterval(fetchProjects, 30000);
     return () => clearInterval(interval);
   }, []);
-
-  const getActivityIcon = (type: ActivityItem['type']) => {
-    switch (type) {
-      case 'github_commit':
-        return <GitCommit className="w-4 h-4 text-cyan-400" />;
-      case 'github_repo':
-        return <FolderGit2 className="w-4 h-4 text-violet-400" />;
-      case 'contact_request':
-        return <Mail className="w-4 h-4 text-emerald-400" />;
-      case 'portfolio_view':
-        return <Eye className="w-4 h-4 text-amber-400" />;
-      case 'social_event':
-        return <Share2 className="w-4 h-4 text-blue-400" />;
-      case 'newsletter':
-        return <Send className="w-4 h-4 text-pink-400" />;
-      default:
-        return <Activity className="w-4 h-4 text-slate-400" />;
-    }
-  };
-
-  const filteredActivities = activities.filter((act) => {
-    if (activeFilter === 'All') return true;
-    if (activeFilter === 'GitHub') return act.type === 'github_commit' || act.type === 'github_repo';
-    if (activeFilter === 'Contact') return act.type === 'contact_request';
-    if (activeFilter === 'Telemetry') return act.type === 'portfolio_view' || act.type === 'newsletter';
-    return true;
-  });
 
   return (
     <section id="activity" className="py-24 relative overflow-hidden border-t border-slate-900">
@@ -104,7 +58,7 @@ export default function LiveActivity() {
             </div>
 
             <button
-              onClick={fetchActivities}
+              onClick={fetchProjects}
               disabled={isRefreshing}
               className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition-colors"
               title="Refresh Activity"
@@ -114,79 +68,32 @@ export default function LiveActivity() {
           </div>
         </div>
 
-        {/* Filter Pills */}
-        <div className="flex items-center space-x-2 mb-8 overflow-x-auto pb-2 no-scrollbar">
-          {['All', 'GitHub', 'Contact', 'Telemetry'].map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all ${
-                activeFilter === filter
-                  ? 'bg-slate-800 text-cyan-300 border border-cyan-500/40 shadow-sm'
-                  : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border border-slate-800'
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-
-        {/* Activity Feed Grid / Timeline */}
-        {filteredActivities.length === 0 ? (
+        {/* Unique Projects Grid */}
+        {projects.length === 0 ? (
           <div className="glass-panel rounded-2xl p-8 sm:p-12 text-center border border-slate-800/80 max-w-xl mx-auto">
             <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 text-slate-500 flex items-center justify-center mx-auto mb-4">
-              <Activity className="w-6 h-6 text-slate-400" />
+              <FolderGit2 className="w-6 h-6 text-slate-400" />
             </div>
-            <h3 className="text-base font-semibold text-white mb-2">No live activity events yet</h3>
+            <h3 className="text-base font-semibold text-white mb-2">No active projects</h3>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Real-time repository commits, project deployments, and direct inquiries will stream here automatically once initiated.
+              Projects currently being worked on through GitHub will appear here automatically.
             </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            {filteredActivities.map((item) => (
+            {projects.map((projectName) => (
               <div
-                key={item.id}
-                className="glass-card rounded-2xl p-5 border border-slate-800/80 hover:border-slate-700 transition-all flex flex-col justify-between group"
+                key={projectName}
+                className="glass-card rounded-2xl p-5 sm:p-6 border border-slate-800/80 hover:border-slate-700 transition-all flex items-center space-x-4 group"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center space-x-2.5">
-                      <div className="p-2 rounded-xl bg-slate-900 border border-slate-800">
-                        {getActivityIcon(item.type)}
-                      </div>
-                      <span className="text-[11px] font-mono text-indigo-400 uppercase tracking-wider">
-                        {item.source}
-                      </span>
-                    </div>
-
-                    <span className="text-[11px] font-mono text-slate-500 whitespace-nowrap">
-                      {formatRelativeTime(item.timestamp)}
-                    </span>
-                  </div>
-
-                  <h3 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors mb-1.5">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-xs text-slate-400 leading-relaxed mb-4">
-                    {item.description}
-                  </p>
+                <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-cyan-400 shrink-0 group-hover:border-cyan-500/40 transition-colors">
+                  <FolderGit2 className="w-5 h-5" />
                 </div>
-
-                {item.url && (
-                  <div className="pt-3 border-t border-slate-800/60 flex justify-end">
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[11px] font-mono text-cyan-400 hover:text-cyan-300 flex items-center space-x-1"
-                    >
-                      <span>View upstream</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  </div>
-                )}
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-cyan-300 transition-colors tracking-tight truncate">
+                    {projectName}
+                  </h3>
+                </div>
               </div>
             ))}
           </div>

@@ -269,6 +269,8 @@ export const TIMELINE: TimelineItem[] = [
   },
 ];
 
+export const CURRENT_GITHUB_PROJECTS: string[] = ['Voxora-AI'];
+
 export const INITIAL_NOTIFICATIONS: AppNotification[] = [];
 
 export const INITIAL_ACTIVITIES: ActivityItem[] = [

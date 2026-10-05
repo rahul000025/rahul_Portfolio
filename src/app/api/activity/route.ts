@@ -1,15 +1,13 @@
 import { NextResponse } from 'next/server';
-import { Store } from '@/lib/store';
-import { INITIAL_ACTIVITIES } from '@/lib/data';
-import { ActivityItem } from '@/lib/types';
+import { CURRENT_GITHUB_PROJECTS } from '@/lib/data';
 
-let cachedGithubEvents: ActivityItem[] = [];
+let cachedProjects: string[] = CURRENT_GITHUB_PROJECTS || ['Voxora-AI'];
 let lastFetchTime = 0;
 
-async function fetchGithubActivity(): Promise<ActivityItem[]> {
+async function fetchActiveGithubProjects(): Promise<string[]> {
   const now = Date.now();
-  if (cachedGithubEvents.length > 0 && now - lastFetchTime < 60 * 1000) {
-    return cachedGithubEvents;
+  if (cachedProjects.length > 0 && now - lastFetchTime < 60 * 1000) {
+    return cachedProjects;
   }
 
   try {
@@ -22,99 +20,47 @@ async function fetchGithubActivity(): Promise<ActivityItem[]> {
     });
 
     if (!res.ok) {
-      return cachedGithubEvents;
+      return cachedProjects;
     }
 
     const events = await res.json();
-    if (!Array.isArray(events)) return cachedGithubEvents;
+    if (!Array.isArray(events)) return cachedProjects;
 
-    const formatted: ActivityItem[] = events
-      .filter((e: any) => e.type === 'PushEvent' || e.type === 'CreateEvent')
-      .slice(0, 8)
-      .map((e: any) => {
-        const repoName = e.repo?.name || 'rahul000025/Voxora-AI';
-        const isPush = e.type === 'PushEvent';
-        const branch = e.payload?.ref?.replace('refs/heads/', '') || 'main';
+    const projectSet = new Set<string>();
+    for (const event of events) {
+      if (event.repo && event.repo.name) {
+        const cleanName = event.repo.name.includes('/')
+          ? event.repo.name.split('/')[1]
+          : event.repo.name;
 
-        return {
-          id: `gh-${e.id}`,
-          type: isPush ? 'github_commit' : 'github_repo',
-          title: isPush ? `Pushed commits to ${repoName}` : `Created branch in ${repoName}`,
-          description: isPush
-            ? `Committed updates to ${branch} branch`
-            : `Initialized ${branch} branch on ${repoName}`,
-          timestamp: e.created_at,
-          icon: isPush ? 'GitCommit' : 'FolderGit2',
-          url: `https://github.com/${repoName}`,
-          source: 'GitHub',
-        };
-      });
+        if (cleanName && cleanName.toLowerCase() !== 'rahul000025') {
+          projectSet.add(cleanName);
+        }
+      }
+    }
 
-    if (formatted.length > 0) {
-      cachedGithubEvents = formatted;
+    const uniqueProjects = Array.from(projectSet);
+    if (uniqueProjects.length > 0) {
+      cachedProjects = uniqueProjects;
       lastFetchTime = now;
     }
-    return cachedGithubEvents;
+
+    return cachedProjects;
   } catch (err) {
-    console.error('Error fetching live GitHub activity:', err);
-    return cachedGithubEvents;
+    console.error('Error fetching GitHub active projects:', err);
+    return cachedProjects;
   }
 }
 
 export async function GET() {
   try {
-    const localActivities = Store.getActivities();
-    const liveGithub = await fetchGithubActivity();
-
-    // Combine local activities, live GitHub events, and initial baseline activities
-    const combined = [...localActivities, ...liveGithub];
-    if (combined.length === 0) {
-      combined.push(...INITIAL_ACTIVITIES);
-    } else {
-      // Ensure baseline telemetry is present if none in local
-      const hasTelemetry = combined.some((a) => a.type === 'portfolio_view');
-      if (!hasTelemetry) {
-        const telemetryItem = INITIAL_ACTIVITIES.find((a) => a.type === 'portfolio_view');
-        if (telemetryItem) combined.push(telemetryItem);
-      }
-    }
-
-    // Deduplicate by id
-    const seen = new Set<string>();
-    const uniqueActivities: ActivityItem[] = [];
-    for (const item of combined) {
-      if (!seen.has(item.id)) {
-        seen.add(item.id);
-        uniqueActivities.push(item);
-      }
-    }
-
-    return NextResponse.json({ success: true, activities: uniqueActivities });
+    const projects = await fetchActiveGithubProjects();
+    return NextResponse.json({ success: true, projects });
   } catch (error) {
-    return NextResponse.json({ success: true, activities: INITIAL_ACTIVITIES });
+    return NextResponse.json({ success: true, projects: CURRENT_GITHUB_PROJECTS || ['Voxora-AI'] });
   }
 }
 
 export async function POST(req: Request) {
-  try {
-    const body = await req.json();
-    const { type, title, description, icon, source, url } = body;
-
-    if (!title || !description) {
-      return NextResponse.json({ error: "Title and description required" }, { status: 400 });
-    }
-
-    const item = Store.recordActivity({
-      type: type || 'portfolio_view',
-      title,
-      description,
-      icon: icon || 'Activity',
-      source: source || 'Portfolio Client',
-      url,
-    });
-
-    return NextResponse.json({ success: true, activity: item });
-  } catch (error) {
-    return NextResponse.json({ error: "Failed to record activity" }, { status: 500 });
-  }
+  return NextResponse.json({ success: true });
 }
