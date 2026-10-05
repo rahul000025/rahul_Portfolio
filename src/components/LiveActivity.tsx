@@ -5,6 +5,23 @@ import { Activity, GitCommit, FolderGit2, Mail, Eye, Share2, Send, RefreshCw, Ra
 import { ActivityItem } from '@/lib/types';
 import { INITIAL_ACTIVITIES } from '@/lib/data';
 
+function formatRelativeTime(timestamp: string): string {
+  if (!timestamp) return 'Recently';
+  if (timestamp.includes('ago') || timestamp.includes('Just now') || timestamp.toLowerCase() === 'active') {
+    return timestamp;
+  }
+  const date = new Date(timestamp);
+  if (isNaN(date.getTime())) return timestamp;
+  const now = Date.now();
+  const diffSec = Math.floor((now - date.getTime()) / 1000);
+  if (diffSec < 60) return 'Just now';
+  if (diffSec < 3600) return `${Math.floor(diffSec / 60)}m ago`;
+  if (diffSec < 86400) return `${Math.floor(diffSec / 3600)}h ago`;
+  if (diffSec < 172800) return 'Yesterday';
+  if (diffSec < 604800) return `${Math.floor(diffSec / 86400)}d ago`;
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
 export default function LiveActivity() {
   const [activities, setActivities] = useState<ActivityItem[]>(INITIAL_ACTIVITIES);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -144,7 +161,7 @@ export default function LiveActivity() {
                     </div>
 
                     <span className="text-[11px] font-mono text-slate-500 whitespace-nowrap">
-                      {item.timestamp}
+                      {formatRelativeTime(item.timestamp)}
                     </span>
                   </div>
 

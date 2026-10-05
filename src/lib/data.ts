@@ -271,7 +271,67 @@ export const TIMELINE: TimelineItem[] = [
 
 export const INITIAL_NOTIFICATIONS: AppNotification[] = [];
 
-export const INITIAL_ACTIVITIES: ActivityItem[] = [];
+export const INITIAL_ACTIVITIES: ActivityItem[] = [
+  {
+    id: "gh-23085643239",
+    type: "github_commit",
+    title: "Pushed commits to rahul000025/Voxora-AI",
+    description: "Committed updates to main branch in Voxora-AI",
+    timestamp: "2026-10-05T13:02:15Z",
+    icon: "GitCommit",
+    url: "https://github.com/rahul000025/Voxora-AI",
+    source: "GitHub",
+  },
+  {
+    id: "gh-23084798033",
+    type: "github_commit",
+    title: "Pushed commits to rahul000025/Voxora-AI",
+    description: "Refactored core architecture on main branch",
+    timestamp: "2026-10-05T12:55:04Z",
+    icon: "GitCommit",
+    url: "https://github.com/rahul000025/Voxora-AI",
+    source: "GitHub",
+  },
+  {
+    id: "gh-23082664149",
+    type: "github_commit",
+    title: "Pushed commits to rahul000025/Voxora-AI",
+    description: "Updated model integration pipelines",
+    timestamp: "2026-10-05T12:35:42Z",
+    icon: "GitCommit",
+    url: "https://github.com/rahul000025/Voxora-AI",
+    source: "GitHub",
+  },
+  {
+    id: "gh-23033567757",
+    type: "github_commit",
+    title: "Pushed commits to rahul000025/Voxora-AI",
+    description: "Optimized asynchronous inference handlers",
+    timestamp: "2026-10-05T06:29:02Z",
+    icon: "GitCommit",
+    url: "https://github.com/rahul000025/Voxora-AI",
+    source: "GitHub",
+  },
+  {
+    id: "gh-22987083429",
+    type: "github_repo",
+    title: "Created branch in rahul000025/Voxora-AI",
+    description: "Initialized main branch on rahul000025/Voxora-AI",
+    timestamp: "2026-10-04T17:52:53Z",
+    icon: "FolderGit2",
+    url: "https://github.com/rahul000025/Voxora-AI",
+    source: "GitHub",
+  },
+  {
+    id: "act-telemetry-active",
+    type: "portfolio_view",
+    title: "Live Portfolio Client Session",
+    description: "Secure HTTPS client session synchronized with telemetry stream",
+    timestamp: "Active",
+    icon: "Eye",
+    source: "Telemetry",
+  },
+];
 
 export const SOCIAL_INTEGRATIONS: SocialIntegration[] = [
   {
