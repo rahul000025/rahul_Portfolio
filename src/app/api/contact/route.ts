@@ -86,7 +86,6 @@ export async function POST(req: Request) {
     return NextResponse.json({
       success: true,
       message: "Thanks! Your message has been received.",
-      data: savedMessage,
     });
   } catch (error) {
     console.error("Contact API error:", error);
@@ -97,11 +96,9 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET(req: Request) {
-  try {
-    const messages = Store.getMessages();
-    return NextResponse.json({ success: true, messages });
-  } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch messages" }, { status: 500 });
-  }
+export async function GET() {
+  return NextResponse.json(
+    { success: false, error: "Access Denied. Messages are private and accessible only via authenticated admin portal." },
+    { status: 403 }
+  );
 }

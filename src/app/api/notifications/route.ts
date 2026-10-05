@@ -3,7 +3,11 @@ import { Store } from '@/lib/store';
 
 export async function GET() {
   try {
-    const notifications = Store.getNotifications();
+    const allNotifications = Store.getNotifications();
+    // Visitor messages and contact inquiries are strictly private and never exposed publicly
+    const notifications = allNotifications.filter(
+      n => n.source !== 'Contact Request' && n.source !== 'Message'
+    );
     const unreadCount = notifications.filter(n => !n.read).length;
     return NextResponse.json({ success: true, notifications, unreadCount });
   } catch (error) {

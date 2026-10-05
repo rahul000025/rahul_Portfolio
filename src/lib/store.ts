@@ -91,7 +91,7 @@ export const Store = {
     data.messages.unshift(newMsg);
     data.analytics.contactRequests += 1;
 
-    // Also push a live notification
+    // Also push a live notification for admin center
     data.notifications.unshift({
       id: `notif-${Date.now()}`,
       source: "Contact Request",
@@ -100,17 +100,6 @@ export const Store = {
       read: false,
       priority: "high",
       actionUrl: "/admin#messages",
-    });
-
-    // Also push to live activity
-    data.activities.unshift({
-      id: `act-${Date.now()}`,
-      type: "contact_request",
-      title: `New contact request from ${newMsg.name}`,
-      description: `Inquiry category: ${newMsg.reason} - "${newMsg.subject}"`,
-      timestamp: "Just now",
-      icon: "Mail",
-      source: "Portfolio Contact Form",
     });
 
     saveData(data);

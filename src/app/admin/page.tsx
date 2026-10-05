@@ -68,15 +68,36 @@ export default function AdminPage() {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'logout' }),
+      });
+    } catch (err) {
+      console.error(err);
+    }
     localStorage.removeItem('rahul_admin_session');
     setIsAuthenticated(false);
+  };
+
+  const getAuthHeaders = (): Record<string, string> => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('rahul_admin_session') : null;
+    return token ? { 'Authorization': `Bearer ${token}`, 'x-admin-token': token } : {};
   };
 
   const fetchAdminData = async () => {
     setIsRefreshing(true);
     try {
-      const res = await fetch('/api/admin');
+      const res = await fetch('/api/admin', {
+        headers: getAuthHeaders(),
+      });
+      if (res.status === 401) {
+        localStorage.removeItem('rahul_admin_session');
+        setIsAuthenticated(false);
+        return;
+      }
       if (res.ok) {
         const json = await res.json();
         if (json.data) {
@@ -98,9 +119,17 @@ export default function AdminPage() {
     try {
       const res = await fetch('/api/admin', {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...getAuthHeaders(),
+        },
         body: JSON.stringify({ id, status }),
       });
+      if (res.status === 401) {
+        localStorage.removeItem('rahul_admin_session');
+        setIsAuthenticated(false);
+        return;
+      }
       if (res.ok) {
         setMessages(prev => prev.map(m => m.id === id ? { ...m, status } : m));
         if (selectedMessage && selectedMessage.id === id) {
@@ -115,7 +144,15 @@ export default function AdminPage() {
   const deleteMessage = async (id: string) => {
     if (!confirm('Are you sure you want to delete this message?')) return;
     try {
-      const res = await fetch(`/api/admin?id=${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/admin?id=${id}`, {
+        method: 'DELETE',
+        headers: getAuthHeaders(),
+      });
+      if (res.status === 401) {
+        localStorage.removeItem('rahul_admin_session');
+        setIsAuthenticated(false);
+        return;
+      }
       if (res.ok) {
         setMessages(prev => prev.filter(m => m.id !== id));
         if (selectedMessage && selectedMessage.id === id) {
