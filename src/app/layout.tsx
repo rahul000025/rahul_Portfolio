@@ -3,6 +3,7 @@ import "./globals.css";
 import { PERSONAL_INFO } from "@/lib/data";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rahulthakur.dev"),
   title: "Rahul Thakur | Software Engineer • AI/ML • Full-Stack Developer",
   description: "Official portfolio of Rahul Thakur, Software Engineer specializing in scalable full-stack applications, distributed systems, and modern AI/ML inference architectures.",
   keywords: [
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "Rahul Thakur Portfolio",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80",
+        url: "/rahul.jpg",
         width: 1200,
         height: 630,
         alt: "Rahul Thakur - Software Engineer",
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     title: "Rahul Thakur | Software Engineer • AI/ML",
     description: "I build intelligent, scalable and beautifully engineered digital experiences.",
     creator: "@rahulkr568579",
-    images: ["https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"],
+    images: ["/rahul.jpg"],
   },
   robots: {
     index: true,
@@ -76,7 +77,8 @@ export default function RootLayout({
       "FastAPI",
       "Next.js",
       "React",
-      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
     ],
   };
 

@@ -83,7 +83,7 @@ ADMIN_PASSWORD=rahul2026
 
 # Email / Notifications (Optional for Resend / Transactional alerts)
 RESEND_API_KEY=your_resend_api_key
-ADMIN_NOTIFICATION_EMAIL=rahul.thakur.dev@gmail.com
+ADMIN_NOTIFICATION_EMAIL=rk7840145@gmail.com
 ```
 
 ---

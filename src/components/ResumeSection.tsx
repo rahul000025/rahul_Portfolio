@@ -36,7 +36,7 @@ export default function ResumeSection() {
           <h1>RAHUL THAKUR</h1>
           <div class="subtitle">Software Engineer • AI/ML • Full-Stack Developer</div>
           <div class="contacts">
-            Location: Bangalore, India | Email: rahul.thakur.dev@gmail.com | Portfolio: Available
+            Location: Bangalore, India | Email: rk7840145@gmail.com | Portfolio: Available
           </div>
 
           <h2>Summary</h2>
@@ -50,7 +50,7 @@ export default function ResumeSection() {
             <strong>Frontend:</strong> React, Next.js 15, Tailwind CSS, HTML5, CSS3, WebSockets<br/>
             <strong>Backend & Systems:</strong> FastAPI, Node.js, Express, REST APIs, Microservices, Redis<br/>
             <strong>AI / Machine Learning:</strong> PyTorch, Scikit-Learn, Gemini API, RAG, LangChain, Vector DBs<br/>
-            <strong>Cloud & DevOps:</strong> Docker, Kubernetes, Linux, Git, GitHub Actions, PostgreSQL, MongoDB
+            <strong>Cloud & DevOps:</strong> Docker, Kubernetes, Git, GitHub Actions, MongoDB, MySQL
           </p>
 
           <h2>Applied Knowledge & Project Milestones</h2>
@@ -71,7 +71,7 @@ export default function ResumeSection() {
 
           <h2>Education & Credentials</h2>
           <p style="font-size: 13px;">
-            <strong>B.Tech in Computer Science & Engineering</strong> — First Class Distinction (2021 - 2025)<br/>
+            <strong>Bachelor of Computer Applications (BCA)</strong> — Computer Applications & Software Systems<br/>
             <strong>Certifications:</strong> AWS Certified Solutions Architect, Deep Learning Specialization (DeepLearning.AI)
           </p>
         </body>
@@ -160,9 +160,9 @@ export default function ResumeSection() {
                 <GraduationCap className="w-4 h-4" />
                 <span>EDUCATION</span>
               </div>
-              <p className="font-semibold text-white">B.Tech in Computer Science</p>
+              <p className="font-semibold text-white">Bachelor of Computer Applications (BCA)</p>
               <p className="text-slate-400 leading-relaxed">
-                First Class with Distinction. Focused on algorithms, networks, operating systems, and cryptography.
+                First Class with Distinction. Focused on software development, database systems, web technologies, and algorithms.
               </p>
             </div>
 
@@ -171,7 +171,7 @@ export default function ResumeSection() {
                 <Award className="w-4 h-4" />
                 <span>CERTIFICATIONS</span>
               </div>
-              <p className="font-semibold text-white">8+ Industry Credentials</p>
+              <p className="font-semibold text-white">Industry Credentials</p>
               <p className="text-slate-400 leading-relaxed">
                 AWS Solutions Architect, Deep Learning Specialization, and Google Cloud Data Engineering.
               </p>
@@ -245,7 +245,7 @@ export default function ResumeSection() {
                   <div><strong>Frontend:</strong> React, Next.js 15, TypeScript, Tailwind, WebSockets</div>
                   <div><strong>Backend:</strong> Python, FastAPI, Node.js, REST APIs, Microservices</div>
                   <div><strong>AI & Machine Learning:</strong> PyTorch, Deep Learning, Gemini API, RAG</div>
-                  <div><strong>Database & Cloud:</strong> PostgreSQL, MongoDB, Docker, Linux, Git</div>
+                  <div><strong>Database & Tools:</strong> MongoDB, MySQL, Docker, Git</div>
                 </div>
               </div>
 
@@ -273,7 +273,7 @@ export default function ResumeSection() {
                   </div>
                   <p className="text-xs text-slate-400">Hands-on Architecture & Implementation</p>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    Designed reactive Next.js 15 applications with WebSockets synchronization, Redis caching layers, and PostgreSQL optimization.
+                    Designed reactive Next.js 15 applications with WebSockets synchronization, Redis caching layers, and database optimization.
                   </p>
                 </div>
               </div>
@@ -281,8 +281,8 @@ export default function ResumeSection() {
               {/* Education */}
               <div className="space-y-1 pt-2 border-t border-slate-800">
                 <div className="flex justify-between text-xs font-bold text-white">
-                  <span>Bachelor of Technology in Computer Science & Engineering</span>
-                  <span className="font-mono text-cyan-400">2021 - 2025</span>
+                  <span>Bachelor of Computer Applications (BCA)</span>
+                  <span className="font-mono text-cyan-400">Computer Science & Applications</span>
                 </div>
                 <p className="text-xs text-slate-400">Graduated with First Class Distinction</p>
               </div>

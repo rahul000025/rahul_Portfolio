@@ -7,7 +7,7 @@ export const PERSONAL_INFO = {
   status: "Available for opportunities",
   availabilityStatus: "available", // available | busy | open_to_consulting
   location: "Bangalore, India",
-  email: "rahul.thakur.dev@gmail.com",
+  email: "rk7840145@gmail.com",
   phone: "+91 98765 43210",
   bioHeadline: "I build intelligent, scalable and beautifully engineered digital experiences.",
   aboutDetailed: `I am an ambitious Software Engineer and AI/ML practitioner dedicated to architecting fault-tolerant, high-concurrency systems and intelligent user-centric products. Blending modern frontend craftsmanship with rigorous backend distributed architectures and applied machine learning models, I translate complex technical problems into elegant, production-grade solutions.`,
@@ -18,12 +18,6 @@ export const PERSONAL_INFO = {
     twitter: "https://x.com/rahulkr568579",
     instagram: "https://www.instagram.com/rahul__thakur0025?stkn=MWV2NjJkdXFsZXlmaA==",
   },
-  stats: [
-    { label: "Projects Completed", value: 28, suffix: "+" },
-    { label: "Technologies", value: 22, suffix: "+" },
-    { label: "Years Learning & Practice", value: 4, suffix: "+" },
-    { label: "Certifications", value: 8, suffix: "+" },
-  ],
   interests: [
     { name: "AI / Machine Learning", icon: "Brain", desc: "Large Language Models, Deep Neural Nets, Predictive Analytics & Autonomous Agents" },
     { name: "Full-Stack Development", icon: "Layers", desc: "Reactive Frontends, High-Speed APIs & Serverless Microservices" },
@@ -55,7 +49,6 @@ export const TECH_STACK: TechItem[] = [
   { name: "Python for Data", category: "AI/ML", level: 92, experience: "NumPy & Dataflow", icon: "Binary", color: "#4B8BBE", description: "NumPy, Pandas, Matplotlib, exploratory data analysis & vectorized computation." },
 
   // Database
-  { name: "PostgreSQL", category: "Database", level: 89, experience: "Relational Modeling", icon: "Database", color: "#336791", description: "Relational modeling, indexing strategies, CTEs, transactions & ACID compliance." },
   { name: "MongoDB", category: "Database", level: 91, experience: "NoSQL Aggregations", icon: "Boxes", color: "#47A248", description: "Document schemas, aggregation pipelines, replica sets & high-speed indexing." },
   { name: "MySQL", category: "Database", level: 86, experience: "Relational Queries", icon: "DatabaseZap", color: "#00758F", description: "Structured query optimization, stored procedures, joins & normalization." },
 
@@ -64,7 +57,6 @@ export const TECH_STACK: TechItem[] = [
   { name: "GitHub", category: "Tools", level: 93, experience: "Actions CI/CD", icon: "Github", color: "#E6EDF3", description: "GitHub Actions CI/CD pipelines, release management, pull requests & code reviews." },
   { name: "Docker", category: "Tools", level: 86, experience: "Containerization", icon: "Box", color: "#2496ED", description: "Containerization, multi-stage builds, docker-compose & environment parity." },
   { name: "VS Code", category: "Tools", level: 96, experience: "Tooling & Extensions", icon: "Laptop", color: "#007ACC", description: "Custom extensions, remote SSH development, debugging & terminal automation." },
-  { name: "Linux", category: "Tools", level: 90, experience: "Shell & Environment", icon: "HardDrive", color: "#FCC624", description: "Bash scripting, systemd, SSH, process monitoring & permissions management." },
 ];
 
 export const PROJECTS: Project[] = [
@@ -76,8 +68,8 @@ export const PROJECTS: Project[] = [
     description: "An enterprise-grade computer vision and NLP diagnostic platform designed to process high-resolution medical imaging scans and multi-modal clinical notes with 99.1% classification precision.",
     problem: "Healthcare specialists face diagnostic backlogs and fragmented clinical record reviews, leading to critical delay in early anomaly detection.",
     solution: "Developed an asynchronous inference pipeline integrating fine-tuned vision transformers with Google Gemini multimodal models, delivering sub-second anomaly heatmaps and structured summaries.",
-    architecture: "Next.js 15 client communicates via WebSockets with a FastAPI microservice backed by PyTorch CUDA GPU cluster, Qdrant vector database, and PostgreSQL for audit trails.",
-    technologies: ["Python", "PyTorch", "FastAPI", "React", "Next.js", "Docker", "Gemini API", "PostgreSQL"],
+    architecture: "Next.js 15 client communicates via WebSockets with a FastAPI microservice backed by PyTorch CUDA GPU cluster, Qdrant vector database, and MongoDB for audit trails.",
+    technologies: ["Python", "PyTorch", "FastAPI", "React", "Next.js", "Docker", "Gemini API", "MongoDB"],
     features: [
       "Real-time DICOM image segmentation and heatmap overlay",
       "Automated clinical reporting with strict medical grounding",
@@ -99,7 +91,7 @@ export const PROJECTS: Project[] = [
     problem: "Modern microservices environments are susceptible to credential stuffing, API authorization bypasses, and distributed lateral movement.",
     solution: "Engineered an eBPF-inspired network probe and behavioral ML detector that intercepts anomalous API calls, scoring zero-trust risk dynamically and executing instant automated IP isolation.",
     architecture: "Distributed Node.js and Go daemon agents feeding telemetry through Redis Pub/Sub into a streaming Python classification worker, with React real-time SOC dashboard.",
-    technologies: ["Python", "Node.js", "FastAPI", "Next.js", "TypeScript", "Redis", "Docker", "Linux"],
+    technologies: ["Python", "Node.js", "FastAPI", "Next.js", "TypeScript", "Redis", "Docker"],
     features: [
       "Dynamic Zero-Trust behavioral risk scoring engine",
       "Sub-millisecond packet telemetry filtering",
@@ -120,8 +112,8 @@ export const PROJECTS: Project[] = [
     description: "A distributed job scheduler and fault-tolerant service mesh managing background workflows, task prioritization, and dead-letter queue replaying across hybrid clouds.",
     problem: "Complex distributed microservices experience cascade failures during traffic surges due to uncoordinated asynchronous task execution.",
     solution: "Built a resilient event mesh utilizing Raft-based consensus, adaptive backoff rate-limiters, and self-healing circuit breakers to maintain 99.99% uptime.",
-    architecture: "FastAPI REST/gRPC gateway, Redis distributed lock manager, PostgreSQL durable event store, and React visual cluster administration dashboard.",
-    technologies: ["Python", "Node.js", "PostgreSQL", "Docker", "Git", "REST APIs", "TypeScript"],
+    architecture: "FastAPI REST/gRPC gateway, Redis distributed lock manager, MySQL durable event store, and React visual cluster administration dashboard.",
+    technologies: ["Python", "Node.js", "MySQL", "Docker", "Git", "REST APIs", "TypeScript"],
     features: [
       "Dynamic worker autoscaling based on queue latency",
       "Visual DAG workflow builder with dependency graphs",
@@ -164,8 +156,8 @@ export const PROJECTS: Project[] = [
     description: "An advanced algorithmic engine forecasting market trends, detecting statistical anomalies, and synthesizing macroeconomic indicators using hybrid LSTM and attention architectures.",
     problem: "High-frequency financial time-series data contains severe noise and non-stationary patterns that deceive classical statistical regressions.",
     solution: "Designed a multi-head temporal attention neural network trained on multi-decade financial matrices, generating high-confidence interval forecasts with calibrated risk bounds.",
-    architecture: "Python ML core, NumPy, Pandas, FastAPI, PostgreSQL time-scale database, and a responsive Tailwind/React analytical terminal interface.",
-    technologies: ["Python", "Machine Learning", "Deep Learning", "FastAPI", "PostgreSQL", "React", "Docker"],
+    architecture: "Python ML core, NumPy, Pandas, FastAPI, MySQL database, and a responsive Tailwind/React analytical terminal interface.",
+    technologies: ["Python", "Machine Learning", "Deep Learning", "FastAPI", "MySQL", "React", "Docker"],
     features: [
       "Multi-horizon probabilistic forecasting intervals",
       "Real-time anomaly identification across 500+ metrics",
@@ -186,8 +178,8 @@ export const PROJECTS: Project[] = [
     description: "A hardened self-hosted secret management vault featuring lattice-based post-quantum cryptography, hardware key authentication, and granular ephemeral access tokens.",
     problem: "Developers frequently expose production API credentials in local files or CI configs, causing high-severity credential leaks.",
     solution: "Engineered a zero-knowledge encrypted vault where secret payloads are decrypted exclusively client-side via WebAssembly cryptography modules.",
-    architecture: "Next.js TypeScript interface, Rust-compiled WebAssembly crypto core, Node.js API, and encrypted PostgreSQL store.",
-    technologies: ["TypeScript", "Node.js", "Cybersecurity", "React", "PostgreSQL", "Docker", "Linux"],
+    architecture: "Next.js TypeScript interface, Rust-compiled WebAssembly crypto core, Node.js API, and encrypted MongoDB store.",
+    technologies: ["TypeScript", "Node.js", "Cybersecurity", "React", "MongoDB", "Docker"],
     features: [
       "Client-side zero-knowledge AES-256-GCM + Kyber encryption",
       "Time-restricted ephemeral API tokens with auto-destruction",
@@ -222,8 +214,8 @@ export const TIMELINE: TimelineItem[] = [
     subtitle: "Modern Web Frameworks & High-Speed API Design",
     organization: "Hands-on Project Architecture & Real-Time Sync",
     category: "Projects",
-    description: "Mastered end-to-end full-stack architectures: Next.js 15 App Router, React 19, TypeScript type systems, asynchronous FastAPI endpoints, Redis event queues, and PostgreSQL indexing strategies.",
-    skills: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Redis", "WebSockets"],
+    description: "Mastered end-to-end full-stack architectures: Next.js 15 App Router, React 19, TypeScript type systems, asynchronous FastAPI endpoints, Redis event queues, and MongoDB/MySQL database design.",
+    skills: ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "Redis", "WebSockets"],
     icon: "Code",
     badge: "Core Mastery",
   },
@@ -234,22 +226,22 @@ export const TIMELINE: TimelineItem[] = [
     subtitle: "Application Security, Cryptography & Threat Modeling",
     organization: "Specialized Security Research & Hardening",
     category: "Research",
-    description: "Conducted deep technical studies into kernel-level network observability with eBPF, mutual TLS identity attestation, post-quantum cryptographic primitives (Kyber), and zero-knowledge client encryption.",
-    skills: ["Cybersecurity", "Zero-Trust", "Cryptography", "eBPF", "Linux Security"],
+    description: "Conducted deep technical studies into network observability with eBPF, mutual TLS identity attestation, post-quantum cryptographic primitives (Kyber), and zero-knowledge client encryption.",
+    skills: ["Cybersecurity", "Zero-Trust", "Cryptography", "eBPF", "Cloud Security"],
     icon: "Shield",
     badge: "Security Research",
   },
   {
     id: "time-4",
     year: "2023 - 2024",
-    title: "National Hackathon Finalist & Top Innovator",
-    subtitle: "Real-Time AI Anomaly Detection System",
-    organization: "National Innovation Summit",
+    title: "Technical Innovation & Project Recognition",
+    subtitle: "Real-Time AI Anomaly Detection & Edge Computing",
+    organization: "Academic Technical Exhibition & Project Showcase",
     category: "Achievements",
-    description: "Applied computer vision models, fast algorithmic problem-solving, and reactive UI design under tight 36-hour sprint constraints, winning top honors among 350+ participating developer teams nationwide.",
-    skills: ["Computer Vision", "Python", "FastAPI", "React", "Rapid Prototyping"],
+    description: "Designed and demonstrated an edge computer vision anomaly detection platform, recognized for exceptional algorithmic design, low-latency execution, and software architecture.",
+    skills: ["Computer Vision", "Python", "FastAPI", "React", "System Design"],
     icon: "Trophy",
-    badge: "Award Winner",
+    badge: "Project Distinction",
   },
   {
     id: "time-5",
@@ -266,12 +258,12 @@ export const TIMELINE: TimelineItem[] = [
   {
     id: "time-6",
     year: "2021 - 2025",
-    title: "B.Tech in Computer Science & Engineering",
-    subtitle: "Core Computing, Algorithms & Distributed Systems",
-    organization: "Top Tier Engineering University",
+    title: "Bachelor of Computer Applications (BCA)",
+    subtitle: "Core Computing, Software Development & Database Systems",
+    organization: "University Department of Computer Applications",
     category: "Education",
-    description: "Graduated with First Class Distinction. Strong academic foundation in Data Structures & Algorithms, Operating Systems, Database Management Systems, Computer Networks, and Cryptography.",
-    skills: ["Data Structures", "Algorithms", "Operating Systems", "Networking", "DBMS", "C++"],
+    description: "Graduated with First Class Distinction. Comprehensive study of Data Structures, Database Systems, Computer Networks, Software Engineering, and Modern Web Applications.",
+    skills: ["Data Structures", "Algorithms", "Computer Networks", "DBMS", "C++", "Web Technologies"],
     icon: "GraduationCap",
     badge: "First Class Distinction",
   },
@@ -480,13 +472,13 @@ By combining these paradigms with an asynchronous FastAPI gateway and Redis task
 ### Core Pillars of Zero-Trust
 - **Never Trust, Always Verify:** Every inter-service RPC must cryptographically attest its identity.
 - **Mutual TLS (mTLS):** Enforcing SPIFFE/SPIRE identity certificates with automated rotation every 12 hours.
-- **Kernel-Level Observability via eBPF:** Monitoring raw socket calls at the Linux kernel boundary without injecting invasive user-space sidecars.
+- **Kernel-Level Observability via eBPF:** Monitoring raw socket calls at the system kernel boundary without injecting invasive user-space sidecars.
 
 We explore how deploying non-invasive eBPF programs allows real-time packet inspection, identifying token exfiltration attempts in under 3 microseconds.`,
     coverImage: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
     readingTime: "8 min read",
     date: "April 2026",
-    tags: ["Cybersecurity", "Zero-Trust", "eBPF", "Kubernetes", "Linux"],
+    tags: ["Cybersecurity", "Zero-Trust", "eBPF", "Kubernetes", "CloudSecurity"],
   },
   {
     id: "blog-3",

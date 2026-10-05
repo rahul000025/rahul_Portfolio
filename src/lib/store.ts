@@ -42,7 +42,7 @@ const defaultData: StoreData = {
       email: "priya@scalecloud.io",
       subject: "Consulting: High-Throughput Microservice Architecture",
       reason: "Freelance Project",
-      message: "Hi Rahul, we need expert architectural guidance on tuning our FastAPI + PostgreSQL backend to handle over 20,000 requests per minute with sub-50ms latency. Are you available for a consulting engagement?",
+      message: "Hi Rahul, we need expert architectural guidance on tuning our FastAPI + MySQL backend to handle over 20,000 requests per minute with sub-50ms latency. Are you available for a consulting engagement?",
       source: "Portfolio Contact Form",
       date: new Date(Date.now() - 1000 * 60 * 60 * 3).toISOString(),
       status: "In Progress",

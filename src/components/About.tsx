@@ -1,66 +1,10 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Brain, Layers, Shield, Cloud, Cpu, Sparkles, CheckCircle2, Award, Code2, Rocket } from 'lucide-react';
 import { PERSONAL_INFO } from '@/lib/data';
 
 export default function About() {
-  const [counts, setCounts] = useState({
-    projects: 0,
-    technologies: 0,
-    experience: 0,
-    certifications: 0,
-  });
-
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-
-          // Count up logic
-          const duration = 1800; // ms
-          const startTime = performance.now();
-
-          const targetProjects = PERSONAL_INFO.stats[0].value;
-          const targetTech = PERSONAL_INFO.stats[1].value;
-          const targetExp = PERSONAL_INFO.stats[2].value;
-          const targetCerts = PERSONAL_INFO.stats[3].value;
-
-          const step = (now: number) => {
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            // Ease out cubic
-            const easeOut = 1 - Math.pow(1 - progress, 3);
-
-            setCounts({
-              projects: Math.floor(easeOut * targetProjects),
-              technologies: Math.floor(easeOut * targetTech),
-              experience: Math.floor(easeOut * targetExp),
-              certifications: Math.floor(easeOut * targetCerts),
-            });
-
-            if (progress < 1) {
-              requestAnimationFrame(step);
-            }
-          };
-
-          requestAnimationFrame(step);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasAnimated]);
-
   const interestIcons = {
     Brain: <Brain className="w-5 h-5 text-purple-400" />,
     Layers: <Layers className="w-5 h-5 text-cyan-400" />,
@@ -70,7 +14,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" ref={sectionRef} className="py-24 relative overflow-hidden border-t border-slate-900">
+    <section id="about" className="py-24 relative overflow-hidden border-t border-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -98,8 +42,8 @@ export default function About() {
               <div className="relative mb-6">
                 <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/80 relative group">
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
-                    alt="Rahul Thakur - Engineer"
+                    src="/rahul.jpg"
+                    alt="Rahul Thakur - Software Engineer"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent" />
@@ -187,67 +131,71 @@ export default function About() {
 
         </div>
 
-        {/* Animated Statistics Counter Row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* Core Pillars / Competency Highlights Row (Numerical stats removed per requirement) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           
           {/* Projects Completed */}
-          <div className="glass-card rounded-2xl p-6 text-center border border-slate-800 hover:border-indigo-500/30 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mx-auto mb-3">
-              <Rocket className="w-5 h-5" />
+          <div className="glass-card rounded-2xl p-6 text-center border border-slate-800 hover:border-indigo-500/30 transition-all flex flex-col items-center justify-between">
+            <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mx-auto mb-3">
+              <Rocket className="w-6 h-6" />
             </div>
-            <div className="text-3xl sm:text-5xl font-black text-white font-mono tracking-tight">
-              {counts.projects}
-              <span className="text-indigo-400">+</span>
+            <div>
+              <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">
+                Projects Completed
+              </h4>
+              <p className="text-xs text-indigo-400 font-medium mt-1">
+                Engineered & Deployed
+              </p>
+              <p className="text-[11px] text-slate-500 font-mono mt-1">Open Source & Web Systems</p>
             </div>
-            <p className="text-xs sm:text-sm text-slate-400 font-medium mt-1">
-              Projects Completed
-            </p>
-            <p className="text-[11px] text-slate-500 font-mono mt-0.5">Enterprise & Open Source</p>
           </div>
 
-          {/* Technologies */}
-          <div className="glass-card rounded-2xl p-6 text-center border border-slate-800 hover:border-cyan-500/30 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center mx-auto mb-3">
-              <Layers className="w-5 h-5" />
+          {/* Technologies Mastered */}
+          <div className="glass-card rounded-2xl p-6 text-center border border-slate-800 hover:border-cyan-500/30 transition-all flex flex-col items-center justify-between">
+            <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center mx-auto mb-3">
+              <Layers className="w-6 h-6" />
             </div>
-            <div className="text-3xl sm:text-5xl font-black text-white font-mono tracking-tight">
-              {counts.technologies}
-              <span className="text-cyan-400">+</span>
+            <div>
+              <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">
+                Technologies Mastered
+              </h4>
+              <p className="text-xs text-cyan-400 font-medium mt-1">
+                Full-Stack & AI Stack
+              </p>
+              <p className="text-[11px] text-slate-500 font-mono mt-1">Modern Web & Data Tools</p>
             </div>
-            <p className="text-xs sm:text-sm text-slate-400 font-medium mt-1">
-              Technologies Mastered
-            </p>
-            <p className="text-[11px] text-slate-500 font-mono mt-0.5">Full-Stack & ML Tooling</p>
           </div>
 
-          {/* Years Learning/Experience */}
-          <div className="glass-card rounded-2xl p-6 text-center border border-slate-800 hover:border-purple-500/30 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center mx-auto mb-3">
-              <Cpu className="w-5 h-5" />
+          {/* Learning & Practice */}
+          <div className="glass-card rounded-2xl p-6 text-center border border-slate-800 hover:border-purple-500/30 transition-all flex flex-col items-center justify-between">
+            <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center mx-auto mb-3">
+              <Cpu className="w-6 h-6" />
             </div>
-            <div className="text-3xl sm:text-5xl font-black text-white font-mono tracking-tight">
-              {counts.experience}
-              <span className="text-purple-400">+</span>
+            <div>
+              <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">
+                Learning & Practice
+              </h4>
+              <p className="text-xs text-purple-400 font-medium mt-1">
+                Continuous Exploration
+              </p>
+              <p className="text-[11px] text-slate-500 font-mono mt-1">Deep Systems & AI Study</p>
             </div>
-            <p className="text-xs sm:text-sm text-slate-400 font-medium mt-1">
-              Years Learning & Practice
-            </p>
-            <p className="text-[11px] text-slate-500 font-mono mt-0.5">Deep Systems & AI Study</p>
           </div>
 
           {/* Certifications */}
-          <div className="glass-card rounded-2xl p-6 text-center border border-slate-800 hover:border-emerald-500/30 transition-all">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3">
-              <Award className="w-5 h-5" />
+          <div className="glass-card rounded-2xl p-6 text-center border border-slate-800 hover:border-emerald-500/30 transition-all flex flex-col items-center justify-between">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3">
+              <Award className="w-6 h-6" />
             </div>
-            <div className="text-3xl sm:text-5xl font-black text-white font-mono tracking-tight">
-              {counts.certifications}
-              <span className="text-emerald-400">+</span>
+            <div>
+              <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">
+                Certifications
+              </h4>
+              <p className="text-xs text-emerald-400 font-medium mt-1">
+                Verified Credentials
+              </p>
+              <p className="text-[11px] text-slate-500 font-mono mt-1">Cloud, AI & Systems</p>
             </div>
-            <p className="text-xs sm:text-sm text-slate-400 font-medium mt-1">
-              Certifications
-            </p>
-            <p className="text-[11px] text-slate-500 font-mono mt-0.5">Cloud, AI & Systems</p>
           </div>
 
         </div>

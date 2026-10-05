@@ -169,7 +169,7 @@ const engineer = {
                     <div className="w-full h-full bg-slate-900 rounded-[14px] overflow-hidden flex items-center justify-center relative">
                       {/* Avatar Image representation */}
                       <img
-                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
+                        src="/rahul.jpg"
                         alt="Rahul Thakur"
                         className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                       />
@@ -278,7 +278,7 @@ const engineer = {
                       <p>&#123;</p>
                       <p className="pl-4"><span className="text-cyan-400">&quot;frontend&quot;</span>: <span className="text-amber-300">&quot;Next.js 15, TypeScript, Tailwind&quot;</span>,</p>
                       <p className="pl-4"><span className="text-cyan-400">&quot;backend&quot;</span>: <span className="text-amber-300">&quot;FastAPI, Node.js, Python, REST&quot;</span>,</p>
-                      <p className="pl-4"><span className="text-cyan-400">&quot;database&quot;</span>: <span className="text-amber-300">&quot;PostgreSQL, MongoDB, Redis&quot;</span>,</p>
+                      <p className="pl-4"><span className="text-cyan-400">&quot;database&quot;</span>: <span className="text-amber-300">&quot;MongoDB, MySQL, Redis&quot;</span>,</p>
                       <p className="pl-4"><span className="text-cyan-400">&quot;security&quot;</span>: <span className="text-emerald-400">&quot;Zero-Trust, mTLS, Rate-Limited&quot;</span></p>
                       <p>&#125;</p>
                     </div>
