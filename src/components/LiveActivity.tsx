@@ -72,10 +72,10 @@ export default function LiveActivity() {
               <span>Real-Time Stream</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Live <span className="text-gradient-cyan">Activity</span>
+              Currently Working <span className="text-gradient-cyan">On</span>
             </h2>
             <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-              Legitimately connected activity feeds, verified code commits, incoming portfolio inquiries, and deployment events.
+              Job opportunities, internships, and real-world projects in Full-Stack Web Development, Python, AI, and Node.js.
             </p>
           </div>
 
