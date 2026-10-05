@@ -20,64 +20,18 @@ interface StoreData {
 const DATA_DIR = path.join(process.cwd(), 'data');
 const DATA_FILE = path.join(DATA_DIR, 'store.json');
 
-// Initial seed
+// Initial seed - real data only
 const defaultData: StoreData = {
-  messages: [
-    {
-      id: "msg-1",
-      name: "Alex Thorne",
-      email: "alex.thorne@quantumleap.tech",
-      subject: "Staff AI Engineer Opportunity",
-      reason: "Job Opportunity",
-      message: "Hello Rahul, we came across your work on distributed LLM inference pipelines and would love to discuss a Senior/Staff AI Engineer opportunity at our venture-backed AI infrastructure startup.",
-      source: "Portfolio Contact Form",
-      date: new Date(Date.now() - 1000 * 60 * 45).toISOString(),
-      status: "New",
-      ip: "192.168.1.42",
-      archived: false,
-    },
-    {
-      id: "msg-2",
-      name: "Priya Sharma",
-      email: "priya@scalecloud.io",
-      subject: "Consulting: High-Throughput Microservice Architecture",
-      reason: "Freelance Project",
-      message: "Hi Rahul, we need expert architectural guidance on tuning our FastAPI + MySQL backend to handle over 20,000 requests per minute with sub-50ms latency. Are you available for a consulting engagement?",
-      source: "Portfolio Contact Form",
-      date: new Date(Date.now() - 1000 * 60 * 60 * 3).toISOString(),
-      status: "In Progress",
-      ip: "172.56.21.9",
-      archived: false,
-    },
-    {
-      id: "msg-3",
-      name: "David Chen",
-      email: "david@cybermatrix.org",
-      subject: "eBPF Zero-Trust Collaboration",
-      reason: "Collaboration",
-      message: "Rahul, your insights on eBPF-based socket monitoring are incredible. Would love to collaborate on an open-source security tool for Kubernetes workload attestation.",
-      source: "Portfolio Contact Form",
-      date: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
-      status: "Replied",
-      ip: "104.28.19.2",
-      archived: false,
-    }
-  ],
+  messages: [],
   notifications: INITIAL_NOTIFICATIONS,
   activities: INITIAL_ACTIVITIES,
   socials: SOCIAL_INTEGRATIONS,
   analytics: {
-    totalVisitors: 12480,
-    uniqueVisitors: 8940,
-    projectViews: 21350,
-    contactRequests: 142,
-    history: [
-      { date: "Oct 01", visitors: 340, views: 620, requests: 4 },
-      { date: "Oct 02", visitors: 420, views: 810, requests: 6 },
-      { date: "Oct 03", visitors: 510, views: 980, requests: 9 },
-      { date: "Oct 04", visitors: 680, views: 1240, requests: 12 },
-      { date: "Oct 05", visitors: 820, views: 1530, requests: 15 },
-    ]
+    totalVisitors: 0,
+    uniqueVisitors: 0,
+    projectViews: 0,
+    contactRequests: 0,
+    history: []
   }
 };
 

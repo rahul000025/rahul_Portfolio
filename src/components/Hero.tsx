@@ -41,7 +41,7 @@ const engineer = {
                 ● Available for opportunities
               </span>
               <span className="text-slate-600">|</span>
-              <span className="text-[11px] font-mono text-cyan-400">Bangalore, IN</span>
+              <span className="text-[11px] font-mono text-cyan-400">Greater Noida, IN</span>
             </div>
 
             {/* Profile Heading & Title */}
@@ -193,7 +193,7 @@ const engineer = {
                     Lead Systems & AI Developer
                   </p>
                   <p className="text-[11px] text-indigo-400/90 font-mono mt-0.5">
-                    @rahulthakur-dev
+                    @rahul000025
                   </p>
                 </div>
               </div>

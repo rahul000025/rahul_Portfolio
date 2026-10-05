@@ -23,10 +23,10 @@ export default function AdminPage() {
   const [activities, setActivities] = useState<ActivityItem[]>([]);
   const [socials, setSocials] = useState<SocialIntegration[]>([]);
   const [analytics, setAnalytics] = useState<any>({
-    totalVisitors: 12480,
-    uniqueVisitors: 8940,
-    projectViews: 21350,
-    contactRequests: 142,
+    totalVisitors: 0,
+    uniqueVisitors: 0,
+    projectViews: 0,
+    contactRequests: 0,
     history: []
   });
 
@@ -176,7 +176,7 @@ export default function AdminPage() {
                 <input
                   type="password"
                   required
-                  placeholder="Enter admin password (Default: rahul2026)"
+                  placeholder="Enter admin passcode"
                   value={passwordInput}
                   onChange={(e) => setPasswordInput(e.target.value)}
                   className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs sm:text-sm focus:outline-none focus:border-indigo-400"
@@ -314,9 +314,9 @@ export default function AdminPage() {
                     <Users className="w-4 h-4 text-cyan-400" />
                   </div>
                   <div className="text-2xl font-bold text-white font-mono">
-                    {analytics.totalVisitors?.toLocaleString() || '12,480'}
+                    {analytics.totalVisitors || 0}
                   </div>
-                  <p className="text-[11px] text-emerald-400 mt-1 font-mono">+18.4% this week</p>
+                  <p className="text-[11px] text-slate-500 mt-1 font-mono">Telemetry active</p>
                 </div>
 
                 <div className="glass-card rounded-2xl p-5 border border-slate-800">
@@ -325,9 +325,9 @@ export default function AdminPage() {
                     <Activity className="w-4 h-4 text-indigo-400" />
                   </div>
                   <div className="text-2xl font-bold text-white font-mono">
-                    {analytics.uniqueVisitors?.toLocaleString() || '8,940'}
+                    {analytics.uniqueVisitors || 0}
                   </div>
-                  <p className="text-[11px] text-emerald-400 mt-1 font-mono">+12.1% this week</p>
+                  <p className="text-[11px] text-slate-500 mt-1 font-mono">Real-time tracking</p>
                 </div>
 
                 <div className="glass-card rounded-2xl p-5 border border-slate-800">
@@ -339,7 +339,9 @@ export default function AdminPage() {
                     {messages.length}
                   </div>
                   <p className="text-[11px] text-cyan-400 mt-1 font-mono">
-                    {messages.filter(m => m.status === 'New').length} pending review
+                    {messages.filter(m => m.status === 'New').length > 0
+                      ? `${messages.filter(m => m.status === 'New').length} pending review`
+                      : 'Inbox clear'}
                   </p>
                 </div>
 
@@ -349,9 +351,9 @@ export default function AdminPage() {
                     <Eye className="w-4 h-4 text-purple-400" />
                   </div>
                   <div className="text-2xl font-bold text-white font-mono">
-                    {analytics.projectViews?.toLocaleString() || '21,350'}
+                    {analytics.projectViews || 0}
                   </div>
-                  <p className="text-[11px] text-purple-400 mt-1 font-mono">High engagement</p>
+                  <p className="text-[11px] text-slate-500 mt-1 font-mono">Verified clicks</p>
                 </div>
               </div>
 
@@ -360,38 +362,40 @@ export default function AdminPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-sm font-bold text-white">Traffic & Engagement Telemetry</h3>
-                    <p className="text-xs text-slate-400 font-mono">Daily Visitors vs. Project Views (Last 5 Days)</p>
+                    <p className="text-xs text-slate-400 font-mono">Real-time visitor telemetry and interaction trends</p>
                   </div>
                   <span className="text-xs font-mono text-cyan-400 px-2 py-1 rounded bg-slate-900 border border-slate-800">
                     Live Engine
                   </span>
                 </div>
 
-                <div className="h-48 flex items-end justify-between gap-3 pt-6 border-b border-slate-800/80 pb-2">
-                  {[
-                    { day: "Oct 01", visitors: 340, views: 620 },
-                    { day: "Oct 02", visitors: 420, views: 810 },
-                    { day: "Oct 03", visitors: 510, views: 980 },
-                    { day: "Oct 04", visitors: 680, views: 1240 },
-                    { day: "Oct 05", visitors: 820, views: 1530 },
-                  ].map((bar) => (
-                    <div key={bar.day} className="flex-1 flex flex-col items-center gap-2 h-full justify-end">
-                      <div className="w-full flex items-end justify-center gap-1.5 h-36">
-                        <div
-                          style={{ height: `${(bar.visitors / 900) * 100}%` }}
-                          className="w-1/2 bg-indigo-500 rounded-t-md hover:bg-indigo-400 transition-all relative group"
-                          title={`Visitors: ${bar.visitors}`}
-                        />
-                        <div
-                          style={{ height: `${(bar.views / 1600) * 100}%` }}
-                          className="w-1/2 bg-cyan-400 rounded-t-md hover:bg-cyan-300 transition-all relative group"
-                          title={`Views: ${bar.views}`}
-                        />
+                {analytics.history && analytics.history.length > 0 ? (
+                  <div className="h-48 flex items-end justify-between gap-3 pt-6 border-b border-slate-800/80 pb-2">
+                    {analytics.history.map((bar: any) => (
+                      <div key={bar.date} className="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+                        <div className="w-full flex items-end justify-center gap-1.5 h-36">
+                          <div
+                            style={{ height: `${Math.min(100, Math.max(10, bar.visitors * 10))}%` }}
+                            className="w-1/2 bg-indigo-500 rounded-t-md hover:bg-indigo-400 transition-all relative group"
+                            title={`Visitors: ${bar.visitors}`}
+                          />
+                          <div
+                            style={{ height: `${Math.min(100, Math.max(10, bar.views * 10))}%` }}
+                            className="w-1/2 bg-cyan-400 rounded-t-md hover:bg-cyan-300 transition-all relative group"
+                            title={`Views: ${bar.views}`}
+                          />
+                        </div>
+                        <span className="text-[10px] font-mono text-slate-400">{bar.date}</span>
                       </div>
-                      <span className="text-[10px] font-mono text-slate-400">{bar.day}</span>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="h-40 flex flex-col items-center justify-center text-center text-slate-500 text-xs font-mono border-b border-slate-800/80 pb-2">
+                    <BarChart3 className="w-8 h-8 text-slate-600 mb-2 opacity-50" />
+                    <span>No historical traffic recorded yet</span>
+                    <span className="text-[11px] text-slate-600 mt-0.5">Real visitor interactions and project views will be tracked here</span>
+                  </div>
+                )}
 
                 <div className="flex items-center justify-center space-x-6 text-xs font-mono text-slate-400 pt-1">
                   <div className="flex items-center space-x-2">
@@ -418,25 +422,31 @@ export default function AdminPage() {
                 </div>
 
                 <div className="divide-y divide-slate-800">
-                  {messages.slice(0, 3).map((msg) => (
-                    <div key={msg.id} className="py-3 flex items-center justify-between">
-                      <div>
-                        <div className="flex items-center space-x-2">
-                          <span className="text-sm font-semibold text-white">{msg.name}</span>
-                          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">
-                            {msg.reason}
-                          </span>
-                        </div>
-                        <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">{msg.subject}</p>
-                      </div>
-
-                      <span className={`text-[11px] font-mono px-2 py-0.5 rounded-full ${
-                        msg.status === 'New' ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/30' : 'bg-slate-900 text-slate-400'
-                      }`}>
-                        {msg.status}
-                      </span>
+                  {messages.length === 0 ? (
+                    <div className="py-8 text-center text-xs text-slate-500 font-mono">
+                      No contact requests received yet.
                     </div>
-                  ))}
+                  ) : (
+                    messages.slice(0, 3).map((msg) => (
+                      <div key={msg.id} className="py-3 flex items-center justify-between">
+                        <div>
+                          <div className="flex items-center space-x-2">
+                            <span className="text-sm font-semibold text-white">{msg.name}</span>
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">
+                              {msg.reason}
+                            </span>
+                          </div>
+                          <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">{msg.subject}</p>
+                        </div>
+
+                        <span className={`text-[11px] font-mono px-2 py-0.5 rounded-full ${
+                          msg.status === 'New' ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/30' : 'bg-slate-900 text-slate-400'
+                        }`}>
+                          {msg.status}
+                        </span>
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
             </div>
@@ -483,54 +493,62 @@ export default function AdminPage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-800/60">
-                      {filteredMessages.map((msg) => (
-                        <tr
-                          key={msg.id}
-                          className="hover:bg-slate-900/40 cursor-pointer transition-colors"
-                          onClick={() => setSelectedMessage(msg)}
-                        >
-                          <td className="p-4">
-                            <div className="font-semibold text-white">{msg.name}</div>
-                            <div className="text-slate-400 font-mono text-[11px]">{msg.email}</div>
-                          </td>
-                          <td className="p-4">
-                            <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[10px]">
-                              {msg.reason}
-                            </span>
-                          </td>
-                          <td className="p-4 max-w-xs truncate text-slate-300">
-                            {msg.subject}
-                          </td>
-                          <td className="p-4">
-                            <span className={`px-2 py-0.5 rounded-full font-mono text-[10px] font-semibold ${
-                              msg.status === 'New' ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/30' :
-                              msg.status === 'In Progress' ? 'bg-amber-950 text-amber-400 border border-amber-500/30' :
-                              msg.status === 'Replied' ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/30' :
-                              'bg-slate-900 text-slate-400'
-                            }`}>
-                              {msg.status}
-                            </span>
-                          </td>
-                          <td className="p-4" onClick={(e) => e.stopPropagation()}>
-                            <div className="flex items-center space-x-2">
-                              <a
-                                href={`mailto:${msg.email}?subject=Re: ${encodeURIComponent(msg.subject)}`}
-                                className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-cyan-400 hover:text-white"
-                                title="Reply via Email"
-                              >
-                                <Send className="w-3.5 h-3.5" />
-                              </a>
-                              <button
-                                onClick={() => deleteMessage(msg.id)}
-                                className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-500 hover:text-rose-400"
-                                title="Delete message"
-                              >
-                                <Trash2 className="w-3.5 h-3.5" />
-                              </button>
-                            </div>
+                      {filteredMessages.length === 0 ? (
+                        <tr>
+                          <td colSpan={5} className="p-8 text-center text-slate-500 font-mono text-xs">
+                            No inquiries found.
                           </td>
                         </tr>
-                      ))}
+                      ) : (
+                        filteredMessages.map((msg) => (
+                          <tr
+                            key={msg.id}
+                            className="hover:bg-slate-900/40 cursor-pointer transition-colors"
+                            onClick={() => setSelectedMessage(msg)}
+                          >
+                            <td className="p-4">
+                              <div className="font-semibold text-white">{msg.name}</div>
+                              <div className="text-slate-400 font-mono text-[11px]">{msg.email}</div>
+                            </td>
+                            <td className="p-4">
+                              <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[10px]">
+                                {msg.reason}
+                              </span>
+                            </td>
+                            <td className="p-4 max-w-xs truncate text-slate-300">
+                              {msg.subject}
+                            </td>
+                            <td className="p-4">
+                              <span className={`px-2 py-0.5 rounded-full font-mono text-[10px] font-semibold ${
+                                msg.status === 'New' ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/30' :
+                                msg.status === 'In Progress' ? 'bg-amber-950 text-amber-400 border border-amber-500/30' :
+                                msg.status === 'Replied' ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/30' :
+                                'bg-slate-900 text-slate-400'
+                              }`}>
+                                {msg.status}
+                              </span>
+                            </td>
+                            <td className="p-4" onClick={(e) => e.stopPropagation()}>
+                              <div className="flex items-center space-x-2">
+                                <a
+                                  href={`mailto:${msg.email}?subject=Re: ${encodeURIComponent(msg.subject)}`}
+                                  className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-cyan-400 hover:text-white"
+                                  title="Reply via Email"
+                                >
+                                  <Send className="w-3.5 h-3.5" />
+                                </a>
+                                <button
+                                  onClick={() => deleteMessage(msg.id)}
+                                  className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-500 hover:text-rose-400"
+                                  title="Delete message"
+                                >
+                                  <Trash2 className="w-3.5 h-3.5" />
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))
+                      )}
                     </tbody>
                   </table>
                 </div>
@@ -606,23 +624,29 @@ export default function AdminPage() {
               </div>
 
               <div className="glass-panel rounded-2xl border border-slate-800 divide-y divide-slate-800/60">
-                {notifications.map((n) => (
-                  <div key={n.id} className="p-4 flex items-center justify-between">
-                    <div>
-                      <div className="flex items-center space-x-2 mb-1">
-                        <span className="text-[11px] font-mono text-indigo-400 uppercase">{n.source}</span>
-                        <span className="text-[10px] text-slate-500">{n.timestamp}</span>
-                      </div>
-                      <p className="text-xs text-slate-200">{n.message}</p>
-                    </div>
-
-                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded ${
-                      n.read ? 'bg-slate-900 text-slate-500' : 'bg-cyan-950 text-cyan-400 border border-cyan-500/30'
-                    }`}>
-                      {n.read ? 'Read' : 'Unread'}
-                    </span>
+                {notifications.length === 0 ? (
+                  <div className="p-8 text-center text-xs text-slate-500 font-mono">
+                    No notifications recorded.
                   </div>
-                ))}
+                ) : (
+                  notifications.map((n) => (
+                    <div key={n.id} className="p-4 flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center space-x-2 mb-1">
+                          <span className="text-[11px] font-mono text-indigo-400 uppercase">{n.source}</span>
+                          <span className="text-[10px] text-slate-500">{n.timestamp}</span>
+                        </div>
+                        <p className="text-xs text-slate-200">{n.message}</p>
+                      </div>
+
+                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded ${
+                        n.read ? 'bg-slate-900 text-slate-500' : 'bg-cyan-950 text-cyan-400 border border-cyan-500/30'
+                      }`}>
+                        {n.read ? 'Read' : 'Unread'}
+                      </span>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           )}

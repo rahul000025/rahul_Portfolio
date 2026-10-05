@@ -13,7 +13,7 @@ Designed with **Apple-level simplicity**, **futuristic obsidian aesthetics**, **
 - **Interactive Terminal & Code Snippet:** Tabbed interactive code terminal showcasing profile configuration, architectural stack, and streaming AI runtime code with one-click copy.
 - **Deep-Dive Project Modals:** Rich modals detailing Problem Statements, Engineered Solutions, Systems Architecture, Technical Specs, Feature Checklists, Live Demonstrations, and GitHub Repositories.
 - **Live Activity Feed:** Legitimately connected activity stream tracking verified GitHub commits, newly initialized repositories, website inquiries, and telemetry visits.
-- **Protected Admin Dashboard (`/admin`):** Telemetry dashboard featuring visitor KPIs, interaction graphs, full CRUD lead management (`New`, `In Progress`, `Replied`, `Closed`), social webhook indicators, and platform settings. Default Access Passcode: `rahul2026`.
+- **Protected Admin Dashboard (`/admin`):** Telemetry dashboard featuring visitor KPIs, interaction graphs, full CRUD lead management (`New`, `In Progress`, `Replied`, `Closed`), social webhook indicators, and platform settings. Access protected by secure passcode authentication.
 - **Integrated Resume Suite:** Interactive document viewer modal and instantaneous print/PDF download.
 - **SEO & Performance Engineered:** Open Graph tags, Twitter/X card metadata, JSON-LD Person/WebSite structured data, `robots.txt`, and dynamic `sitemap.xml`.
 
@@ -41,7 +41,7 @@ Designed with **Apple-level simplicity**, **futuristic obsidian aesthetics**, **
 
 ## 🔗 Verified Social Profiles
 
-- **GitHub:** [https://github.com/rahulthakur-dev](https://github.com/rahulthakur-dev)
+- **GitHub:** [https://github.com/rahul000025](https://github.com/rahul000025)
 - **LinkedIn:** [https://www.linkedin.com/in/errahulkumar0025](https://www.linkedin.com/in/errahulkumar0025?utm_source=share_via&utm_content=profile&utm_medium=member_android)
 - **Instagram:** [https://www.instagram.com/rahul__thakur0025](https://www.instagram.com/rahul__thakur0025?stkn=MWV2NjJkdXFsZXlmaA==)
 - **Facebook:** [https://www.facebook.com/share/19JVLuEdDk/](https://www.facebook.com/share/19JVLuEdDk/)
@@ -70,7 +70,7 @@ npm run start
 
 ### 4. Admin Dashboard Access
 Navigate to [http://localhost:3000/admin](http://localhost:3000/admin).
-- **Default Passcode:** `rahul2026` (configurable via `ADMIN_PASSWORD` in `.env.local`).
+- Passcode protected (configured securely via `ADMIN_PASSWORD` in server environment).
 
 ---
 
@@ -79,7 +79,7 @@ Navigate to [http://localhost:3000/admin](http://localhost:3000/admin).
 Create a `.env.local` file in the root directory:
 ```env
 # Admin Portal Passcode
-ADMIN_PASSWORD=rahul2026
+ADMIN_PASSWORD=your_secure_admin_passcode
 
 # Email / Notifications (Optional for Resend / Transactional alerts)
 RESEND_API_KEY=your_resend_api_key

@@ -36,7 +36,7 @@ export default function ResumeSection() {
           <h1>RAHUL THAKUR</h1>
           <div class="subtitle">Software Engineer • AI/ML • Full-Stack Developer</div>
           <div class="contacts">
-            Location: Bangalore, India | Email: rk7840145@gmail.com | Portfolio: Available
+            Location: Greater Noida, India | Email: rk7840145@gmail.com | Portfolio: Available
           </div>
 
           <h2>Summary</h2>
@@ -50,12 +50,12 @@ export default function ResumeSection() {
             <strong>Frontend:</strong> React, Next.js 15, Tailwind CSS, HTML5, CSS3, WebSockets<br/>
             <strong>Backend & Systems:</strong> FastAPI, Node.js, Express, REST APIs, Microservices, Redis<br/>
             <strong>AI / Machine Learning:</strong> PyTorch, Scikit-Learn, Gemini API, RAG, LangChain, Vector DBs<br/>
-            <strong>Cloud & DevOps:</strong> Docker, Kubernetes, Git, GitHub Actions, MongoDB, MySQL
+            <strong>Cloud & DevOps:</strong> Docker, Git, GitHub Actions, MongoDB, MySQL
           </p>
 
           <h2>Applied Knowledge & Project Milestones</h2>
           <div class="job-title">Applied AI & Autonomous Agent Architecture</div>
-          <div class="job-org">Advanced Systems Exploration & Production Projects (2025 - 2026)</div>
+          <div class="job-org">Advanced Systems Exploration & Technical Projects</div>
           <ul>
             <li>Engineered asynchronous LLM inference pipelines with continuous batching and sub-second response times.</li>
             <li>Designed zero-trust security perimeters with automated threat isolation and eBPF network telemetry.</li>
@@ -63,7 +63,7 @@ export default function ResumeSection() {
           </ul>
 
           <div class="job-title" style="margin-top: 14px;">Full-Stack Web & Distributed Systems Engineering</div>
-          <div class="job-org">Production Project Architectures (2024 - 2025)</div>
+          <div class="job-org">Production Project Architectures & Implementations</div>
           <ul>
             <li>Built reactive Next.js 15 full-stack applications with real-time WebSockets synchronization.</li>
             <li>Developed multimodal diagnostic models achieving 99.1% classification precision with Qdrant vector retrieval.</li>
@@ -118,7 +118,7 @@ export default function ResumeSection() {
                 {PERSONAL_INFO.title}
               </p>
               <p className="text-xs text-slate-400 mt-1">
-                Bangalore, India • {PERSONAL_INFO.email}
+                Greater Noida, India • {PERSONAL_INFO.email}
               </p>
             </div>
 
@@ -222,7 +222,7 @@ export default function ResumeSection() {
                   Software Engineer • AI/ML • Full-Stack Developer
                 </p>
                 <p className="text-xs text-slate-400 mt-2 font-mono">
-                  Email: {PERSONAL_INFO.email} | Location: Bangalore, India | Portfolio: Live Verified
+                  Email: {PERSONAL_INFO.email} | Location: Greater Noida, India | Portfolio: Live Verified
                 </p>
               </div>
 
@@ -258,9 +258,9 @@ export default function ResumeSection() {
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-white">
                     <span>Applied AI & Autonomous Agent Architecture</span>
-                    <span className="font-mono text-cyan-400">2025 - 2026</span>
+                    <span className="font-mono text-cyan-400">Core Systems</span>
                   </div>
-                  <p className="text-xs text-slate-400">Advanced Systems Exploration & Production Projects</p>
+                  <p className="text-xs text-slate-400">Advanced Systems Exploration & Technical Projects</p>
                   <p className="text-xs text-slate-300 leading-relaxed">
                     Practical knowledge of continuous batching, PagedAttention KV caches, and multimodal diagnostic models. Engineered sub-second inference pipelines with FastAPI and Google Gemini API.
                   </p>
@@ -269,7 +269,7 @@ export default function ResumeSection() {
                 <div className="space-y-1 pt-2">
                   <div className="flex justify-between text-xs font-bold text-white">
                     <span>Full-Stack Web & Distributed Systems Engineering</span>
-                    <span className="font-mono text-cyan-400">2024 - 2025</span>
+                    <span className="font-mono text-cyan-400">Production Web</span>
                   </div>
                   <p className="text-xs text-slate-400">Hands-on Architecture & Implementation</p>
                   <p className="text-xs text-slate-300 leading-relaxed">

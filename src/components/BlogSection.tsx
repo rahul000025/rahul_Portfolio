@@ -9,7 +9,15 @@ export default function BlogSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [readingPost, setReadingPost] = useState<BlogPost | null>(null);
 
-  const categories = ['All', 'AI', 'Software Engineering', 'Web Development', 'Cybersecurity'];
+  const categories = [
+    'All',
+    'AI',
+    'Software Engineering',
+    'Distributed Systems',
+    'Hardware & Systems',
+    'Web Development',
+    'Cybersecurity',
+  ];
 
   const filteredPosts = BLOG_POSTS.filter(
     (post) => selectedCategory === 'All' || post.category === selectedCategory

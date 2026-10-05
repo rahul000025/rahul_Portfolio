@@ -124,7 +124,7 @@ export default function Navbar() {
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>Available for opportunities</span>
               </span>
-              <span className="font-mono text-[10px] text-emerald-500">2026</span>
+              <span className="font-mono text-[10px] text-emerald-500">Active</span>
             </div>
 
             {navLinks.map((item) => (

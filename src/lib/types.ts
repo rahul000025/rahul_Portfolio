@@ -49,7 +49,7 @@ export interface ContactMessage {
   name: string;
   email: string;
   subject: string;
-  reason: 'Job Opportunity' | 'Freelance Project' | 'Collaboration' | 'Technical Discussion' | 'General Inquiry';
+  reason: 'Full-Time Opportunity' | 'Internship Opportunity' | 'Contract / Project' | 'Technical Collaboration' | 'General Inquiry' | string;
   message: string;
   source: string;
   date: string;
@@ -96,7 +96,7 @@ export interface BlogPost {
   id: string;
   title: string;
   slug: string;
-  category: 'AI' | 'Software Engineering' | 'Web Development' | 'Cybersecurity' | 'Technology';
+  category: 'AI' | 'Software Engineering' | 'Web Development' | 'Cybersecurity' | 'Distributed Systems' | 'Hardware & Systems';
   excerpt: string;
   content: string;
   coverImage: string;

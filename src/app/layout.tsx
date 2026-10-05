@@ -15,9 +15,9 @@ export const metadata: Metadata = {
     "Full Stack Developer",
     "Machine Learning Engineer",
     "FastAPI Python Developer",
-    "Next.js Developer Bangalore",
+    "Next.js Developer Greater Noida",
   ],
-  authors: [{ name: "Rahul Thakur", url: "https://github.com/rahulthakur-dev" }],
+  authors: [{ name: "Rahul Thakur", url: "https://github.com/rahul000025" }],
   creator: "Rahul Thakur",
   openGraph: {
     type: "website",

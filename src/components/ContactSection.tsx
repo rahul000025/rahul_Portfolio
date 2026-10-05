@@ -9,7 +9,7 @@ export default function ContactSection() {
     name: '',
     email: '',
     subject: '',
-    reason: 'Job Opportunity' as const,
+    reason: 'Full-Time Opportunity' as const,
     message: '',
     honeypot: '',
   });
@@ -18,10 +18,10 @@ export default function ContactSection() {
   const [feedbackMessage, setFeedbackMessage] = useState('');
 
   const reasons = [
-    'Job Opportunity',
-    'Freelance Project',
-    'Collaboration',
-    'Technical Discussion',
+    'Full-Time Opportunity',
+    'Internship Opportunity',
+    'Contract / Project',
+    'Technical Collaboration',
     'General Inquiry',
   ];
 
@@ -51,7 +51,7 @@ export default function ContactSection() {
         name: '',
         email: '',
         subject: '',
-        reason: 'Job Opportunity',
+        reason: 'Full-Time Opportunity',
         message: '',
         honeypot: '',
       });
@@ -201,7 +201,7 @@ export default function ContactSection() {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Satya Nadella"
+                      placeholder="Your full name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white text-xs sm:text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"
@@ -216,7 +216,7 @@ export default function ContactSection() {
                     <input
                       type="email"
                       required
-                      placeholder="name@organization.com"
+                      placeholder="Your email address"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white text-xs sm:text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all"

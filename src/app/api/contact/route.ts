@@ -55,11 +55,15 @@ export async function POST(req: Request) {
     }
 
     const validReasons = [
+      'Full-Time Opportunity',
+      'Internship Opportunity',
+      'Contract / Project',
+      'Technical Collaboration',
+      'General Inquiry',
       'Job Opportunity',
       'Freelance Project',
       'Collaboration',
       'Technical Discussion',
-      'General Inquiry'
     ];
     const selectedReason = validReasons.includes(reason) ? reason : 'General Inquiry';
 
