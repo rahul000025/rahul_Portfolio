@@ -37,7 +37,7 @@ export default function Home() {
       {/* 4. Featured Projects with Deep-Dive Modal */}
       <FeaturedProjects />
 
-      {/* 5. Experience & Journey Vertical Timeline */}
+      {/* 5. Journey & Knowledge Vertical Timeline */}
       <Experience />
 
       {/* 6. Live Activity Dashboard Stream */}

@@ -14,7 +14,7 @@ export default function Footer() {
     { label: "Home", href: "#" },
     { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
-    { label: "Experience", href: "#experience" },
+    { label: "Knowledge", href: "#experience" },
     { label: "Blog", href: "#blog" },
     { label: "Contact", href: "#contact" },
   ];

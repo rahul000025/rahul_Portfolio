@@ -22,7 +22,7 @@ export default function Navbar() {
     { label: "About", href: "#about" },
     { label: "Tech Stack", href: "#tech-stack" },
     { label: "Projects", href: "#projects" },
-    { label: "Journey", href: "#experience" },
+    { label: "Knowledge", href: "#experience" },
     { label: "Live Activity", href: "#activity" },
     { label: "Insights", href: "#blog" },
     { label: "Contact", href: "#contact" },

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FileText, Download, Eye, ExternalLink, X, Printer, CheckCircle2, Award, Briefcase, GraduationCap, Sparkles } from 'lucide-react';
+import { FileText, Download, Eye, ExternalLink, X, Printer, CheckCircle2, Award, Briefcase, GraduationCap, Sparkles, Brain } from 'lucide-react';
 import { PERSONAL_INFO } from '@/lib/data';
 
 export default function ResumeSection() {
@@ -53,20 +53,20 @@ export default function ResumeSection() {
             <strong>Cloud & DevOps:</strong> Docker, Kubernetes, Linux, Git, GitHub Actions, PostgreSQL, MongoDB
           </p>
 
-          <h2>Professional Experience</h2>
-          <div class="job-title">Senior Full-Stack & AI Systems Engineer</div>
-          <div class="job-org">Innovatech Solutions (2025 - 2026)</div>
+          <h2>Applied Knowledge & Project Milestones</h2>
+          <div class="job-title">Applied AI & Autonomous Agent Architecture</div>
+          <div class="job-org">Advanced Systems Exploration & Production Projects (2025 - 2026)</div>
           <ul>
-            <li>Architected high-concurrency microservices processing 50k+ events/sec with sub-50ms latency.</li>
-            <li>Deployed distributed LLM continuous batching inference engine, dropping tail latency by 42%.</li>
-            <li>Designed zero-trust security API perimeter with automated threat isolation.</li>
+            <li>Engineered asynchronous LLM inference pipelines with continuous batching and sub-second response times.</li>
+            <li>Designed zero-trust security perimeters with automated threat isolation and eBPF network telemetry.</li>
+            <li>Implemented high-concurrency microservices processing 50k+ events/sec with fault-tolerant circuit breaking.</li>
           </ul>
 
-          <div class="job-title" style="margin-top: 14px;">AI/ML Solutions Engineering Intern</div>
-          <div class="job-org">Neural Core Labs (2024)</div>
+          <div class="job-title" style="margin-top: 14px;">Full-Stack Web & Distributed Systems Engineering</div>
+          <div class="job-org">Production Project Architectures (2024 - 2025)</div>
           <ul>
-            <li>Engineered multimodal diagnostic evaluation models achieving 99.1% classification precision.</li>
-            <li>Implemented Qdrant vector search retrieval pipelines for automated semantic document lookup.</li>
+            <li>Built reactive Next.js 15 full-stack applications with real-time WebSockets synchronization.</li>
+            <li>Developed multimodal diagnostic models achieving 99.1% classification precision with Qdrant vector retrieval.</li>
           </ul>
 
           <h2>Education & Credentials</h2>
@@ -146,12 +146,12 @@ export default function ResumeSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 text-xs">
             <div className="space-y-2 p-4 rounded-2xl bg-slate-900/60 border border-slate-800/80">
               <div className="flex items-center space-x-2 text-indigo-400 font-bold font-mono">
-                <Briefcase className="w-4 h-4" />
-                <span>EXPERIENCE</span>
+                <Brain className="w-4 h-4" />
+                <span>CORE KNOWLEDGE</span>
               </div>
-              <p className="font-semibold text-white">4+ Years in Systems & AI</p>
+              <p className="font-semibold text-white">Full-Stack & Applied AI Knowledge</p>
               <p className="text-slate-400 leading-relaxed">
-                Full-stack distributed platforms, FastAPI microservices, and LLM fine-tuning and inference optimizations.
+                Deep architectural understanding of LLM inference, asynchronous microservices, modern React 19 / Next.js, and zero-trust security.
               </p>
             </div>
 
@@ -249,31 +249,31 @@ export default function ResumeSection() {
                 </div>
               </div>
 
-              {/* Work History */}
+              {/* Applied Knowledge & Technical Milestones */}
               <div className="space-y-3">
                 <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 font-bold">
-                  Experience & Key Milestones
+                  Applied Knowledge & Engineering Milestones
                 </h4>
                 
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-white">
-                    <span>Senior Full-Stack & AI Systems Engineer</span>
+                    <span>Applied AI & Autonomous Agent Architecture</span>
                     <span className="font-mono text-cyan-400">2025 - 2026</span>
                   </div>
-                  <p className="text-xs text-slate-400">Innovatech Solutions / Tech Lead Initiative</p>
+                  <p className="text-xs text-slate-400">Advanced Systems Exploration & Production Projects</p>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    Led distributed services architecture handling 50,000+ requests/sec. Accelerated model inference pipeline throughput by 42% utilizing continuous batching and asynchronous task queuing.
+                    Practical knowledge of continuous batching, PagedAttention KV caches, and multimodal diagnostic models. Engineered sub-second inference pipelines with FastAPI and Google Gemini API.
                   </p>
                 </div>
 
                 <div className="space-y-1 pt-2">
                   <div className="flex justify-between text-xs font-bold text-white">
-                    <span>AI/ML Solutions Engineering Intern</span>
-                    <span className="font-mono text-cyan-400">2024</span>
+                    <span>Full-Stack Web & Distributed Systems Engineering</span>
+                    <span className="font-mono text-cyan-400">2024 - 2025</span>
                   </div>
-                  <p className="text-xs text-slate-400">Neural Core Labs</p>
+                  <p className="text-xs text-slate-400">Hands-on Architecture & Implementation</p>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    Trained multimodal diagnostic transformers and constructed RAG vector search pipelines with sub-second response times.
+                    Designed reactive Next.js 15 applications with WebSockets synchronization, Redis caching layers, and PostgreSQL optimization.
                   </p>
                 </div>
               </div>

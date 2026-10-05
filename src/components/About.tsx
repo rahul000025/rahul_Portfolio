@@ -230,9 +230,9 @@ export default function About() {
               <span className="text-purple-400">+</span>
             </div>
             <p className="text-xs sm:text-sm text-slate-400 font-medium mt-1">
-              Years Experience
+              Years Learning & Practice
             </p>
-            <p className="text-[11px] text-slate-500 font-mono mt-0.5">Engineering & Research</p>
+            <p className="text-[11px] text-slate-500 font-mono mt-0.5">Deep Systems & AI Study</p>
           </div>
 
           {/* Certifications */}

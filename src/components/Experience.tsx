@@ -1,14 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Briefcase, GraduationCap, Trophy, Award, Rocket, Code2, Sparkles, Calendar, CheckCircle2 } from 'lucide-react';
+import { Brain, GraduationCap, Trophy, Award, Rocket, Code2, Sparkles, Calendar, Shield, BookOpen } from 'lucide-react';
 import { TIMELINE } from '@/lib/data';
 import { TimelineItem } from '@/lib/types';
 
 export default function Experience() {
   const [activeFilter, setActiveFilter] = useState<string>('All');
 
-  const categories = ['All', 'Milestones', 'Internships', 'Projects', 'Achievements', 'Certifications', 'Education'];
+  const categories = ['All', 'Knowledge', 'Projects', 'Research', 'Achievements', 'Certifications', 'Education'];
 
   const filteredTimeline = TIMELINE.filter(
     (item) => activeFilter === 'All' || item.category === activeFilter
@@ -16,12 +16,12 @@ export default function Experience() {
 
   const getTimelineIcon = (category: TimelineItem['category']) => {
     switch (category) {
-      case 'Milestones':
-        return <Rocket className="w-4 h-4 text-cyan-400" />;
-      case 'Internships':
-        return <Briefcase className="w-4 h-4 text-indigo-400" />;
+      case 'Knowledge':
+        return <Brain className="w-4 h-4 text-cyan-400" />;
       case 'Projects':
         return <Code2 className="w-4 h-4 text-purple-400" />;
+      case 'Research':
+        return <Shield className="w-4 h-4 text-indigo-400" />;
       case 'Achievements':
         return <Trophy className="w-4 h-4 text-amber-400" />;
       case 'Certifications':
@@ -40,14 +40,14 @@ export default function Experience() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-mono tracking-wider uppercase">
-            <Rocket className="w-3.5 h-3.5" />
-            <span>Career Milestones</span>
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>Technical Foundations & Progression</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Journey & <span className="text-gradient-primary">Experience</span>
+            Journey & <span className="text-gradient-primary">Knowledge</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-            A chronological timeline of engineering roles, research fellowships, key credentials, and technical distinctions.
+            A progression of deep self-driven learning, core computer science principles, applied AI architectures, and verified credentials.
           </p>
         </div>
 

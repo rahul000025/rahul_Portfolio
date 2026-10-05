@@ -27,7 +27,7 @@ export interface TimelineItem {
   title: string;
   subtitle: string;
   organization: string;
-  category: 'Education' | 'Projects' | 'Internships' | 'Certifications' | 'Achievements' | 'Milestones';
+  category: 'Knowledge' | 'Education' | 'Projects' | 'Certifications' | 'Achievements' | 'Milestones' | 'Research';
   description: string;
   skills: string[];
   icon: string;
