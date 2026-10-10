@@ -34,7 +34,7 @@ export default function Home() {
       {/* 3. Interactive Tech Stack Matrix */}
       <TechStack />
 
-      {/* 4. Featured Projects with Deep-Dive Modal */}
+      {/* 4. Future Projects with Deep-Dive Modal */}
       <FeaturedProjects />
 
       {/* 5. Journey & Knowledge Vertical Timeline */}

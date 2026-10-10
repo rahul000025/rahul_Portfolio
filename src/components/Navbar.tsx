@@ -21,7 +21,7 @@ export default function Navbar() {
   const navLinks = [
     { label: "About", href: "#about" },
     { label: "Tech Stack", href: "#tech-stack" },
-    { label: "Projects", href: "#projects" },
+    { label: "Future Projects", href: "#projects" },
     { label: "Knowledge", href: "#experience" },
     { label: "Live Activity", href: "#activity" },
     { label: "Insights", href: "#blog" },

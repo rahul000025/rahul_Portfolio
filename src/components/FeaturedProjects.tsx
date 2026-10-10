@@ -53,7 +53,7 @@ export default function FeaturedProjects() {
             <span>Engineered Systems</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Featured <span className="text-gradient-primary">Projects</span>
+            Future <span className="text-gradient-primary">Projects</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
             Enterprise platforms, distributed architectures, and machine learning models engineered for real-world reliability and scale.

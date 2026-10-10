@@ -24,7 +24,7 @@ Designed with **Apple-level simplicity**, **futuristic obsidian aesthetics**, **
 1. **Hero / Landing Page:** Full-screen hero featuring glowing developer avatar, title, bio headline, live availability status (`● Available for opportunities`), primary and secondary CTAs, verified social icons, and interactive code terminal.
 2. **About Me:** Professional bio, 5 core engineering specializations (AI/ML, Full-Stack Development, Cybersecurity, Cloud/DevOps, Problem Solving), and count-up animated statistics (Projects Completed, Technologies, Experience, Certifications).
 3. **Tech Stack:** Interactive technology matrix with category filtering (`Frontend`, `Backend`, `AI/ML`, `Database`, `Tools`), proficiency progress bars, and experience tags.
-4. **Featured Projects:** High-impact projects with category filters (`All`, `AI/ML`, `Web Development`, `Cybersecurity`, `Software Engineering`) and full-screen architecture modals.
+4. **Future Projects:** High-impact projects with category filters (`All`, `AI/ML`, `Web Development`, `Cybersecurity`, `Software Engineering`) and full-screen architecture modals.
 5. **Journey & Experience Timeline:** Vertical timeline tracking Education, Projects, Internships, Certifications, Achievements, and Career Milestones.
 6. **Live Activity Stream:** Connected activity stream with live status indicator and relative timestamps.
 7. **Unified Notification Center:** Header bell popover with active badges, category filters, and state sync.
